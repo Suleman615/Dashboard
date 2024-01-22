@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .page-height {
+        height: calc(100vh - 5rem);
+    }
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 2em
+}
+
+.thin-scrollbar::-webkit-scrollbar-track-piece {
+    background: #B88E2F;
+
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+    background: #FCF8F3;
+
+}
