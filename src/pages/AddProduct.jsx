@@ -1,7 +1,33 @@
+import { useState } from 'react';
 import { Topbar } from '../components/Topbar'
-import { DollarSign, Tag } from 'lucide-react'
+import { DollarSign, Tag, X } from 'lucide-react'
 
 function AddProduct() {
+
+
+
+    const [images, setImages] = useState([]);
+
+    const handleImageChange = (e) => {
+        // Get selected files from the input
+        const selectedImages = Array.from(e.target.files);
+
+
+        // Update the state with the new images
+        setImages([...images, ...selectedImages]);
+    };
+
+    const removeImage = (nmbr) => {
+
+        console.log("number is")
+        let tempImages = [...images]
+
+        tempImages.splice(nmbr, 1)
+        setImages(tempImages)
+    }
+
+
+
     return (
         <div className='bg-light py-2 '>
             <Topbar target={'Product Details'} />
@@ -15,7 +41,7 @@ function AddProduct() {
                         <div className='my-6  flex flex-col md:flex-row gap-x-10 md:gap-x-20 lg:gap-x-30 xl:gap-x-40 gap-y-8 flex-wrap  '>
                             <span className='flex w-[80vw] md:w-2/5 flex-col gap-1'>
                                 <label htmlFor="productName">Product Name</label>
-                                <input className=' border focus:outline-brown text-md p-1 rounded-md' type="text" name="" id="productname" />
+                                <input className=' border focus:outline-brown text-md p-1 rounded-md' type="text" name="" id="productName" />
                             </span>
 
                             <span className='flex flex-col  gap-1 w-[80vw] md:w-2/5'>
@@ -71,6 +97,38 @@ function AddProduct() {
                             <label htmlFor="description">Product Description</label>
                             <textarea className='w- border focus:outline-brown text-md p-1 rounded-md' name="" id="description" rows="3"></textarea>
                         </span>
+
+
+                        {/* **************** Image Upload And View ******************* */}
+                        <span className='flex flex-col gap-2 my-4 border rounded-md p-2  '>
+                            <p>You can upload Multiple pictures of your Product from different angles for Customers <label className='cursor-pointer underline text-blue-700 hover:text-brown' htmlFor="image">Click Here</label> to upload image:</p>
+                            <input onChange={(e) => handleImageChange(e)} id="image" multiple className='border  border-green-600 w-fit hidden' type="file" />
+                            <div>
+                                <hr className='my-2' />
+                                {images.length === 0 ? (
+                                    <p>No images selected.</p>
+                                ) : (
+                                    <div className='flex gap-3 flex-wrap' >
+                                        {images.map((image, index) => (
+                                            <span className='relative' key={index}>
+                                                <button type='button' onClick={() => removeImage(index)} className='absolute -right-1 cursor-pointer -top-1 bg-white rounded-full' >
+                                                    <X />
+                                                </button>
+                                                <img
+                                                    className='rounded-md'
+                                                    src={URL.createObjectURL(image)}
+                                                    alt={`Product Image ${index + 1}`}
+                                                    style={{ maxWidth: '100px', maxHeight: '100px' }}
+                                                />
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </span>
+
+                        {/* ******************** */}
+
 
                     </form>
 
