@@ -15,13 +15,13 @@ function Dashboard() {
         <>
 
             <Router>
-                <div className='flex h-auto w-full'>
+                <div className='flex min-h-[100vh] w-full'>
 
                     {/* ************* SideBar *************** */}
                     <Sidebar />
 
                     {/* ********** Page Content *******************/}
-                    <div className="   w-full   ">
+                    <div className="    w-full relative ">
 
 
                         <Routes>

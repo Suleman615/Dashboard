@@ -14,7 +14,7 @@ const Sidebar = () => {
     const [currentPage, setCurrentPage] = useState('home')
 
     return (
-        <div className={`hidden pb-10 bg h-[100vh] md:block  thin-scrollbar   overflow-y-scroll bg-medium  ${(sidebar) ? 'w-80' : 'w-20'}`}>
+        <div className={`hidden pb-10 bg  md:block max-h-[100vh]  sticky top-0    thin-scrollbar   overflow-y-scroll bg-medium  ${(sidebar) ? 'w-80' : 'w-20'}`}>
 
             {/* ************ Logo *********** */}
             <div className='my-2 p-3  flex justify-between items-center bg-light'>
