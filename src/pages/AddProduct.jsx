@@ -12,6 +12,7 @@ function AddProduct() {
         subtext: '',
         price: 0,
         category: '',
+        otherCategory:'',
         discount: 0,
         metaTitle: '',
         metaKeywords: '',
@@ -81,7 +82,25 @@ function AddProduct() {
 
                             <span className='flex flex-col gap-1 w-[80vw] md:w-2/5'>
                                 <label htmlFor="otherCategory">Category</label>
-                                <input value={(productData.category!='other')?`${productData.category}`:''}  onChange={(e) => {(productData.category=='other')? setProductData({ ...productData, category: e.target.value }): '' }} placeholder={(productData.category=='other')?'PLease Enter category':`${productData.category}`} className=' border focus:outline-brown text-md p-1 rounded-md' type="text" name="" id="otherCategory" />
+                                <input
+                                    value={productData.category === 'other' ? productData.otherCategory || '' : productData.category}
+                                    onChange={(e) => {
+                                        const { value } = e.target;
+
+                                        if (productData.category === 'other') {
+                                            // Set the value for 'other' category, but store it separately in a new field (e.g., otherCategory)
+                                            setProductData({ ...productData, otherCategory: value });
+                                        } else {
+                                            // If it's not 'other', update the category as normal
+                                            setProductData({ ...productData, category: value });
+                                        }
+                                    }}
+                                    placeholder={productData.category === 'other' ? 'Please Enter category' : productData.category || 'Enter category'}
+                                    className='border focus:outline-brown text-md p-1 rounded-md'
+                                    type="text"
+                                    name="otherCategory"
+                                    id="otherCategory"
+                                />
                             </span>
 
                             <span className='flex flex-col gap-1 w-[80vw] md:w-2/5'>
@@ -122,7 +141,7 @@ function AddProduct() {
 
 
 
-                        {productData.Images.map((colors, index) => (<ImageUpload key={index} color={colors} myIndex={index}  product={productData} updateProduct={setProductData} />))}
+                        {productData.Images.map((colors, index) => (<ImageUpload key={index} color={colors} myIndex={index} product={productData} updateProduct={setProductData} />))}
 
                         {/* <ImageAndColors /> */}
 
@@ -133,7 +152,7 @@ function AddProduct() {
 
 
 
-                        <button  type='button' className='border-2 rounded-md px-6 py-2 my-6'>Cancel</button>
+                        <button type='button' className='border-2 rounded-md px-6 py-2 my-6'>Cancel</button>
 
                         <button type='button' onClick={() => handleProduct()} className='border-2 rounded-md px-6 py-2 my-6 mx-4 bg-medium hover:border-brown hover:text-brown'>Save</button>
                     </form>
