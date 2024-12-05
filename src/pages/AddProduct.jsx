@@ -17,18 +17,19 @@ function AddProduct() {
         metaTitle: '',
         metaKeywords: '',
         Decscriprion: '',
-        Images: [{
-            color: '',
-            previewImage: '',
-            allImages: []
-        }],
+        previewImage: '',
+        colorType:"",
+        allImages: [],
+        color: '',
+            
+        
     })
 
 
 
     const handleProduct = () => {
         console.log(productData)
-        console.log('here')
+        
     }
 
 
@@ -141,13 +142,12 @@ function AddProduct() {
 
 
 
-                        {productData.Images.map((colors, index) => (<ImageUpload key={index} color={colors} myIndex={index} product={productData} updateProduct={setProductData} />))}
+                        <ImageUpload   product={productData} updateProduct={setProductData} />
 
                         {/* <ImageAndColors /> */}
 
                         {/* **************** Add another Color of the Same Product****************** */}
 
-                        {/* <button type='button' onClick={() => addColor()} className='mx-auto block border-2 px-3 py-2 rounded-md text-brown border-brown hover:bg-brown hover:text-white hover:border-light' >+ Add New Color</button> */}
 
 
 

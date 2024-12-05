@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { X } from 'lucide-react'
 
 
-function ImageUpload({ color, myIndex, product, updateProduct }) {
+function ImageUpload({ product, updateProduct }) {
 
 
     const [images, setImages] = useState([]);
-    const [newIndex, setNewIndex] = useState(myIndex);
+    const [color, setColor] = useState("")
 
 
     function handleImageChange(e) {
@@ -20,8 +20,7 @@ function ImageUpload({ color, myIndex, product, updateProduct }) {
 
 
         let productImages = { ...product }
-        color.allImages = [...selectedImages]
-        productImages.Images[myIndex] = color
+        productImages.allImages = [...selectedImages]
         updateProduct(productImages)
     };
 
@@ -34,29 +33,37 @@ function ImageUpload({ color, myIndex, product, updateProduct }) {
 
 
         let productImages = { ...product }
-        color.allImages = [...tempImages]
-        productImages.Images[myIndex] = color
+        productImages.allImages = [...tempImages]
         updateProduct(productImages)
 
     }
+
+
 
     const handlePreview = (event) => {
         const file = event.target.files[0];
         if (file) {
             const blob = new Blob([file], { type: file.type });
-            color.previewImage = blob
             const productUpdate = { ...product }
-            productUpdate.Images[myIndex] = color
+            productUpdate.previewImage = blob
             updateProduct(productUpdate);
         }
 
     };
 
-    const handleColor = (e) => {
+const ProductColor=(v)=>{
+    setColor(v)
 
+    let productImages = { ...product }
+    productImages.color=""
+        productImages.colorType = v
+        updateProduct(productImages)
+
+}
+
+    const handleColor = (e) => {
         let productImages = { ...product }
-        color.color = e.target.value
-        productImages.Images[myIndex] = color
+        productImages.color = e.target.value
         updateProduct(productImages)
     }
 
@@ -70,10 +77,10 @@ function ImageUpload({ color, myIndex, product, updateProduct }) {
             <input onChange={(e) => handlePreview(e)} id="previewImage" className='border  border-green-600 w-fit hidden' type="file" />
 
 
-            {color.previewImage ?
+            {product.previewImage ?
                 <img
                     className='rounded-md my-4 mx-6'
-                    src={product.Images[newIndex].previewImage ? URL.createObjectURL(product.Images[newIndex].previewImage) : ''}
+                    src={product.previewImage ? URL.createObjectURL(product.previewImage) : ''}
                     alt={`Product`}
                     style={{ maxWidth: '150px', maxHeight: '150px' }}
                 /> : <p className='mx-6'>No Image Selected</p>
@@ -107,12 +114,44 @@ function ImageUpload({ color, myIndex, product, updateProduct }) {
                     )}
                 </div>
             </span>
+
             {/* ******** Color Selection************ */}
 
-            <span className='flex flex-col overflow-hidden  gap-2 w-full'>
-                <label htmlFor="color">Product Color</label>
-                <input value="#000000" onChange={(e) => handleColor(e)} className=' border-0  outline-none w-40 h-10 shrink-0 bg-amber-400 text-green-800  p-1 rounded-md ' type="color" name="color" id="color" />
+            <span className="flex flex-col overflow-hidden w-full">
+                <p className="my-2">Select Product Color</p>
+                <span>
+                    <input
+                        type="radio"
+                        name="product_color"
+                        id="singleColor"
+                        value="single"
+                        onChange={() => ProductColor("single")}
+                    />
+                    <label htmlFor="singleColor">Single Color</label>
+                </span>
+                <span>
+                    <input
+                        type="radio"
+                        name="product_color"
+                        id="multiColor"
+                        value="multi"
+                        onChange={() =>ProductColor("multi")}
+                    />
+                    <label htmlFor="multiColor">Multi Color</label>
+                </span>
             </span>
+
+            {
+                color === "single" && <span className='flex flex-col overflow-hidden  gap-2 w-full'>
+                    <label htmlFor="colors">Select Colors</label>
+                    <input value="#000000" onChange={(e) => handleColor(e)} className=' border-0  outline-none w-40 h-10 shrink-0 bg-amber-400 text-green-800  p-1 rounded-md ' type="color" name="color" id="color" />
+
+                </span>
+            }
+
+
+
+
 
         </div>
 
