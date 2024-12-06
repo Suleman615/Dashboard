@@ -108,7 +108,7 @@ function AddProduct() {
                                 <label htmlFor="price">Price</label>
                                 <span className='flex  bg-light  rounded-md items-center border' >
                                     <DollarSign size={24} className='inline flex-shrink-0 text-grey mx-2 ' />
-                                    <input onChange={(e) => { setProductData({ ...productData, price: e.target.value }) }} className='w-[90%] border-s focus:outline-brown text-md p-1  rounded-e-md' type="text" name="" id="price" />
+                                    <input onChange={(e) => { setProductData({ ...productData, price: e.target.value }) }} className='w-[100%] border-s focus:outline-brown text-md p-1  rounded-e-md' type="text" name="" id="price" />
                                 </span>
                             </span>
 
@@ -116,7 +116,7 @@ function AddProduct() {
                                 <label htmlFor="discount">Discount</label>
                                 <span className='flex bg-light  rounded-md items-center border' >
                                     <Tag size={24} className='inline flex-shrink-0 text-grey mx-2 ' />
-                                    <input onChange={(e) => { setProductData({ ...productData, discount: e.target.value }) }} className='w-[90%] border-s focus:outline-brown text-md p-1  rounded-e-md' type="text" name="" id="discount" />
+                                    <input onChange={(e) => { setProductData({ ...productData, discount: e.target.value }) }} className='w-[100%] border-s focus:outline-brown text-md p-1  rounded-e-md' type="text" name="" id="discount" />
                                 </span>
                             </span>
 
