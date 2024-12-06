@@ -37,7 +37,7 @@ const Sidebar = () => {
                 <Link onClick={() => setCurrentPage('home')} to='/' className={`flex  gap-8 hover:text-brown ${(currentPage === 'home') ? 'text-brown' : 'text-black'}`}><Home /><p className={`font-semibold ${(sidebar) ? 'visible' : 'hidden'}`}>Home</p></Link>
                 <Link onClick={() => setCurrentPage('shop')} to='/shop' className={`flex  gap-8 hover:text-brown ${(currentPage === 'shop') ? 'text-brown' : 'text-black'}`}><Store /><p className={`font-semibold ${(sidebar) ? 'visible' : 'hidden'}`}>My Shop</p></Link>
                 <Link onClick={() => setCurrentPage('addProduct')} to='/addProduct' className={`flex  gap-8 hover:text-brown ${(currentPage === 'addProduct') ? 'text-brown' : 'text-black'}`}><ImagePlus /><p className={`font-semibold ${(sidebar) ? 'visible' : 'hidden'}`}>Add Product</p></Link>
-                <Link onClick={() => setCurrentPage('updateProduct')} to='/updateProduct' className={`flex  gap-8 hover:text-brown ${(currentPage === 'updateProduct') ? 'text-brown' : 'text-black'}`}><ArrowUpFromLine /><p className={`font-semibold ${(sidebar) ? 'visible' : 'hidden'}`}>Update Product</p></Link>
+                {/* <Link onClick={() => setCurrentPage('updateProduct')} to='/updateProduct' className={`flex  gap-8 hover:text-brown ${(currentPage === 'updateProduct') ? 'text-brown' : 'text-black'}`}><ArrowUpFromLine /><p className={`font-semibold ${(sidebar) ? 'visible' : 'hidden'}`}>Update Product</p></Link> */}
 
 
             </div>

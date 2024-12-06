@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X } from 'lucide-react'
 
 
+
 function ImageUpload({ product, updateProduct }) {
 
 
@@ -22,19 +23,13 @@ function ImageUpload({ product, updateProduct }) {
             selectedImages = Array.from(e.target.files) || [];
         }
 
-
-
-
-        // Update the state with the new images
-
-
-
         let productImages = { ...product }
         let temp = productImages.allImages
         productImages.allImages = [...temp, ...imageFiles, ...selectedImages]
         setImages(...temp, ...imageFiles, ...selectedImages)
         updateProduct(productImages)
     };
+
 
     const removeImage = (nmbr) => {
 
@@ -52,6 +47,7 @@ function ImageUpload({ product, updateProduct }) {
 
 
 
+
     const handlePreview = (event, dropped) => {
 
         const productUpdate = { ...product }
@@ -65,14 +61,19 @@ function ImageUpload({ product, updateProduct }) {
         } else {
             const file = event.target.files[0];
             if (file) {
-                const blob = new Blob([file], { type: file.type });
-                productUpdate.previewImage = blob
+                // const blob = new Blob([file], { type: file.type });
+                productUpdate.previewImage = file
 
             }
         }
 
         updateProduct(productUpdate);
     };
+
+    function isBlob(value) {
+        console.log(value instanceof Blob)
+        return value instanceof Blob;
+    }
 
     const ProductColor = (v) => {
         setColor(v)
@@ -119,7 +120,7 @@ function ImageUpload({ product, updateProduct }) {
                 {product.previewImage ?
                     <img
                         className='rounded-md my-4 mx-6'
-                        src={product.previewImage ? URL.createObjectURL(product.previewImage) : ''}
+                        src={product.previewImage ? isBlob(product.previewImage)? URL.createObjectURL(product.previewImage) :product.previewImage : ''}
                         alt={`Product`}
                         style={{ maxWidth: '150px', maxHeight: '150px' }}
                     /> : <p className='mx-6'>No Image Selected</p>

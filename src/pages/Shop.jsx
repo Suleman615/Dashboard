@@ -1,14 +1,33 @@
 import { useState } from 'react';
+import myimage from '../assets/profile.jpeg'
 import { Topbar } from '../components/Topbar'
 import { LayoutGrid, List } from 'lucide-react';
-import GridCard from '../components/GridCard';
-import ListCard from '../components/ListCard';
+import GridCard  from '../components/GridCard';
+import ListCard  from '../components/ListCard';
 
 
 
 const Shop = () => {
+
+
     const [layout, setLayout] = useState('grid')
     
+    const productTempelate = {
+        name: 'Product Name',
+        subtext: 'Subtext',
+        price: 5634,
+        category: 'Orange',
+        otherCategory: '',
+        discount: 0,
+        metaTitle: '',
+        metaKeywords: '',
+        Decscription: 'This is default description',
+        previewImage: myimage,
+        colorType: "single",
+        allImages: [],
+        color: '#ec4d18',
+      }
+
     return (
         <div className='overflow-hidden h-screen  '>
             <Topbar target={'My Shop'} />
@@ -26,13 +45,13 @@ const Shop = () => {
            {(layout === 'grid') ?
                 // Grid layout 
                 <div className='flex flex-wrap justify-center  gap-8 my-10 mx-5 items-center '>
-                    <GridCard />
-                    <GridCard />
-                    <GridCard />
-                    <GridCard />
-                    <GridCard />
-                    <GridCard />
-                    <GridCard />
+                    <GridCard singleProduct={productTempelate} />
+                    <GridCard singleProduct={productTempelate} />
+                    <GridCard singleProduct={productTempelate} />
+                    <GridCard singleProduct={productTempelate} />
+                    <GridCard singleProduct={productTempelate} />
+                    <GridCard singleProduct={productTempelate} />
+                    <GridCard singleProduct={productTempelate} />
 
                     
 
@@ -40,17 +59,18 @@ const Shop = () => {
 
                 // list layout 
                 :  <div className='flex flex-col gap-4 m-10  justify-start items-start'>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
-                <ListCard/>
+                    
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
+                <ListCard singleProduct={productTempelate}/>
 
 
 

@@ -1,34 +1,24 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Topbar } from '../components/Topbar'
 import ProductDetails from '../components/ProductDetails'
+import ProductContext from '../utils/ProductContext';
+
 
 const UpdateProduct = () => {
 
 
-    const productTempelate = {
-        name: 'Product Name',
-        subtext: 'Subtext',
-        price: 5634,
-        category: 'Orange',
-        otherCategory: '',
-        discount: 0,
-        metaTitle: '',
-        metaKeywords: '',
-        Decscription: 'This is default description',
-        previewImage: '',
-        colorType: "single",
-        allImages: [],
-        color: '#ec4d18',
+  const { product, updateProductDetails, resetProductDetails } = useContext(ProductContext);
+  const [productData, setProductData] = useState(product);
 
 
-    }
+console.log(product)
   return (
 
 
 
     <div className='bg-light py-2 '>
-        <Topbar target={'Update Product'} />
-        <ProductDetails editData={productTempelate}/>
+      <Topbar target={'Update Product'} />
+      <ProductDetails editData={productData} />
     </div>
   )
 }
