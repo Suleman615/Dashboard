@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar"
 import Shop from "./Shop"
 import AddProduct from "./AddProduct"
 import Home from "./Home"
+import UpdateProduct from "./UpdateProduct"
 
 
 
@@ -30,7 +31,7 @@ function Dashboard() {
                             <Route path="/profile" element={< Profile />} />
                             <Route path="/shop" element={<Shop />} />
                             <Route path="/addproduct" element={<AddProduct />} />
-                            <Route path="/updateProduct" element={<AddProduct />} />
+                            <Route path="/updateProduct" element={<UpdateProduct />} />
 
                         </Routes>
 

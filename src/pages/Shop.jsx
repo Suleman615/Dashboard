@@ -39,7 +39,7 @@ const Shop = () => {
                 </div>
 
                 // list layout 
-                :  <div className='flex flex-col gap-4 m-10 justify-start items-start'>
+                :  <div className='flex flex-col gap-4 m-10  justify-start items-start'>
                 <ListCard/>
                 <ListCard/>
                 <ListCard/>
