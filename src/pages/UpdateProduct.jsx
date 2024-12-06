@@ -16,9 +16,9 @@ const UpdateProduct = () => {
         metaKeywords: '',
         Decscription: 'This is default description',
         previewImage: '',
-        colorType: "",
+        colorType: "single",
         allImages: [],
-        color: '',
+        color: '#ec4d18',
 
 
     }

@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { X } from 'lucide-react'
 
 
 function ImageUpload({ product, updateProduct }) {
 
 
-    const [images, setImages] = useState([]);
-    const [color, setColor] = useState("")
+    const [images, setImages] = useState(product.allImages);
+    const [color, setColor] = useState(product.colorType)
 
 
     async function handleImageChange(e, dropped) {
@@ -108,7 +108,7 @@ function ImageUpload({ product, updateProduct }) {
 
         >
 
-            <div 
+            <div
                 onDrop={(e) => handlePreview(e, true)}
                 onDragOver={handleDragOver}
             >
@@ -170,6 +170,8 @@ function ImageUpload({ product, updateProduct }) {
                         id="singleColor"
                         value="single"
                         onChange={() => ProductColor("single")}
+                        checked={(product.colorType == "single" ? true : false)}
+
                     />
                     <label className="mx-2" htmlFor="singleColor">Single Color</label>
                 </span>
@@ -181,6 +183,7 @@ function ImageUpload({ product, updateProduct }) {
                         id="multiColor"
                         value="multi"
                         onChange={() => ProductColor("multi")}
+                        checked={(product.colorType == "multi" ? true : false)}
                     />
                     <label className="mx-2" htmlFor="multiColor">Multi Color</label>
                 </span>

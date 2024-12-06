@@ -16,7 +16,7 @@ const ProductDetails = ({editData}) => {
         previewImage: '',
         colorType: "",
         allImages: [],
-        color: '',
+        color: '#000000',
 
 
     }
