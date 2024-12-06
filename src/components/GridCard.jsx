@@ -16,7 +16,7 @@ const GridCard = () => {
 
     return (
         <div className='p-2 bg-light rounded-lg  '>
-            <img src={product.image} alt="" srcset="" className='rounded-lg' />
+            <img src={product.image} alt=""  className='rounded-lg' />
             <h3 className='mt-4'>{product.name}</h3>
             <section className='flex justify-between items-center'>
                 <p> <b>$</b>{product.price}</p>

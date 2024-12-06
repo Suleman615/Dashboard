@@ -17,7 +17,7 @@ const ListCard = () => {
         <>
             <div className='bg-light h-20 rounded-lg w-full flex justify-between items-center px-2' >
                 <div className='flex gap-4 items-center'>
-                <img className='h-16 rounded-lg' src={product.image} alt="" srcset="" />
+                <img className='h-16 rounded-lg' src={product.image} alt=""  />
                 <h3 className='font-semibold text-lg '>{product.name}</h3>
                 </div>
                 <p><b>$</b>{product.price}</p>

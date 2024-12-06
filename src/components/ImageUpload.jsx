@@ -51,15 +51,15 @@ function ImageUpload({ product, updateProduct }) {
 
     };
 
-const ProductColor=(v)=>{
-    setColor(v)
+    const ProductColor = (v) => {
+        setColor(v)
 
-    let productImages = { ...product }
-    productImages.color=""
+        let productImages = { ...product }
+        productImages.color = ""
         productImages.colorType = v
         updateProduct(productImages)
 
-}
+    }
 
     const handleColor = (e) => {
         let productImages = { ...product }
@@ -121,23 +121,25 @@ const ProductColor=(v)=>{
                 <p className="my-2">Select Product Color</p>
                 <span>
                     <input
+                        className="accent-brown"
                         type="radio"
                         name="product_color"
                         id="singleColor"
                         value="single"
                         onChange={() => ProductColor("single")}
                     />
-                    <label htmlFor="singleColor">Single Color</label>
+                    <label className="mx-2" htmlFor="singleColor">Single Color</label>
                 </span>
                 <span>
                     <input
+                        className="accent-brown"
                         type="radio"
                         name="product_color"
                         id="multiColor"
                         value="multi"
-                        onChange={() =>ProductColor("multi")}
+                        onChange={() => ProductColor("multi")}
                     />
-                    <label htmlFor="multiColor">Multi Color</label>
+                    <label className="mx-2" htmlFor="multiColor">Multi Color</label>
                 </span>
             </span>
 

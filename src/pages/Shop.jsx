@@ -10,11 +10,11 @@ const Shop = () => {
     const [layout, setLayout] = useState('grid')
     
     return (
-        <>
+        <div className='overflow-hidden h-screen  '>
             <Topbar target={'My Shop'} />
 
             {/* layout options */}
-            <div className='bg-light h-10 flex justify-end items-center  px-2'>
+            <div className='bg-light h-10 flex justify-end items-center   px-2'>
                 <LayoutGrid onClick={() => setLayout('grid')} className='cursor-pointer hover:bg-brown rounded-md p-2' size={40} />
                 <hr className='rotate-90 border-black h-1  w-8' />
                 <List onClick={() => setLayout('list')} className='cursor-pointer hover:bg-brown rounded-md p-2' size={40} />
@@ -22,10 +22,10 @@ const Shop = () => {
 
 
             {/* products */}
-            {(layout === 'grid') ?
-
+           <div className='  page-height overflow-y-scroll thin-scrollbar   '>
+           {(layout === 'grid') ?
                 // Grid layout 
-                <div className='flex flex-wrap justify-center gap-8 my-10 mx-5 items-center'>
+                <div className='flex flex-wrap justify-center  gap-8 my-10 mx-5 items-center '>
                     <GridCard />
                     <GridCard />
                     <GridCard />
@@ -56,10 +56,11 @@ const Shop = () => {
 
 
             </div>
-
             }
+            
+           </div>
 
-        </>)
+        </div>)
 }
 
 export default Shop
