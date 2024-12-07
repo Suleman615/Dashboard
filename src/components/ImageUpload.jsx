@@ -71,7 +71,6 @@ function ImageUpload({ product, updateProduct }) {
     };
 
     function isBlob(value) {
-        console.log(value instanceof Blob)
         return value instanceof Blob;
     }
 

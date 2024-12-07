@@ -1,31 +1,23 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { DollarSign, Tag } from 'lucide-react'
 import ImageUpload from '../components/ImageUpload';
+import ProductContext from '../utils/ProductContext';
+import { useNavigate } from 'react-router-dom';
 const ProductDetails = ({editData}) => {
 
-    const productTempelate = {
-        name: '',
-        subtext: '',
-        price: 0,
-        category: '',
-        otherCategory: '',
-        discount: 0,
-        metaTitle: '',
-        metaKeywords: '',
-        Decscription: '',
-        previewImage: '',
-        colorType: "",
-        allImages: [],
-        color: '#000000',
+    const { product, updateProductDetails, resetProductDetails } = useContext(ProductContext);
+    const navigate = useNavigate();
 
+    const [productData, setProductData] = useState(editData || product)
 
-    }
+    const handleProduct = (e,save) => {
+        e.preventDefault(); // Prevent immediate navigation
+        if(save){
+            console.log(productData)
 
-    const [productData, setProductData] = useState(editData || productTempelate)
-
-    const handleProduct = () => {
-        console.log(productData)
-
+        }
+        navigate('/shop'); // Navigate programmatically     
+        resetProductDetails()
     }
   return (
     <div className={`py-2 px-3 page-height overflow-y-scroll thin-scrollbar`}>
@@ -128,9 +120,9 @@ const ProductDetails = ({editData}) => {
 
 
 
-                        <button type='button' className='border-2 rounded-md px-6 py-2 my-6'>Cancel</button>
+                        <button type='button' onClick={(e) => handleProduct(e,false)} className='border-2 rounded-md px-6 py-2 my-6'>Cancel</button>
 
-                        <button type='button' onClick={() => handleProduct()} className='border-2 rounded-md px-6 py-2 my-6 mx-4 bg-medium hover:border-brown hover:text-brown'>Save</button>
+                        <button type='button' onClick={(e) => handleProduct(e,true)} className='border-2 rounded-md px-6 py-2 my-6 mx-4 bg-medium hover:border-brown hover:text-brown'>Save</button>
                     </form>
 
 

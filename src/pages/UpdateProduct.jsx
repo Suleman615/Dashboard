@@ -11,7 +11,6 @@ const UpdateProduct = () => {
   const [productData, setProductData] = useState(product);
 
 
-console.log(product)
   return (
 
 
