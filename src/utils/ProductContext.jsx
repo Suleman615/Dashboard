@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 
 // Initial product details
 const initialProductState = {
@@ -29,9 +29,9 @@ export const ProductProvider = ({ children }) => {
   };
 
    // Function to reset product details
-  const resetProductDetails = () => {
-    setProduct(initialProductState);
-  };
+   const resetProductDetails = () => {
+    setProduct(initialProductState); // Safe state update
+};
 
   return (
     <ProductContext.Provider

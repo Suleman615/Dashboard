@@ -8,7 +8,6 @@ const UpdateProduct = () => {
 
 
   const { product, updateProductDetails, resetProductDetails } = useContext(ProductContext);
-  const [productData, setProductData] = useState(product);
 
 
   return (
@@ -17,7 +16,7 @@ const UpdateProduct = () => {
 
     <div className='bg-light py-2 '>
       <Topbar target={'Update Product'} />
-      <ProductDetails editData={productData} />
+      <ProductDetails editData={product} />
     </div>
   )
 }
